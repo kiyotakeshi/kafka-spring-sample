@@ -1,0 +1,4 @@
+rootProject.name = 'kafka-spring-sample'
+include 'order-notification-consumer'
+include 'order-rdb-consumer'
+include 'order-producer'
