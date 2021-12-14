@@ -24,6 +24,8 @@ $ ls -l order-rdb-consumer/build/libs/order-rdb-consumer-0.0.1-SNAPSHOT.jar
 
 ## run
 
+![confirm the operation](./kafka-spring-sample.gif)
+
 ```shell
 # first, you should run producer in order to create topic
 $ java -jar order-producer/build/libs/order-producer-0.0.1-SNAPSHOT.jar
