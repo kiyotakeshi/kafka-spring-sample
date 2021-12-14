@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "a2e691b4-d2da-49c4-aea8-f96cd873ec5d",
+		"name": "kafka-spring-sample",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "order-producer",
+			"item": [
+				{
+					"name": "post order event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orderEventId\": null,\n    \"order\": {\n        \"id\": 43333,\n        \"name\": \"チョコモナカジャンボ\",\n        \"price\": 145\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/order-events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order-events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put library event with ID",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orderEventId\": 1,\n    \"order\": {\n        \"id\": 1,\n        \"name\": \"バニラモナカジャンボ\",\n        \"price\": 145\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/order-events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order-events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put library event without ID",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orderEventId\": null,\n    \"order\": {\n        \"id\": 1,\n        \"name\": \"チョコモナカジャンボ\",\n        \"price\": 145\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/order-events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order-events"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -43,6 +43,7 @@ public class OrderEventsService {
 
     private void sendMail(NotificationEmail notificationEmail) {
         MimeMessagePreparator messagePreparer = mimeMessage -> {
+            // @ref https://www.baeldung.com/spring-email-templates
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "UTF-8");
             helper.setFrom("kafka-spring-sample@example.com");
             helper.setTo(notificationEmail.getRecipient());
