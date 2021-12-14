@@ -24,9 +24,14 @@ $ ls -l order-rdb-consumer/build/libs/order-rdb-consumer-0.0.1-SNAPSHOT.jar
 ## check broker from host
 
 ```shell
+# wherever you want
 $ cd /tmp/ && wget https://dlcdn.apache.org/kafka/3.0.0/kafka-3.0.0-src.tgz
 
 $ tar zxvf kafka-3.0.0-src.tgz
+
+$ cd kafka-3.0.0-src
+
+$ ./gradlew jar -PscalaVersion=2.13.6
 
 $ ./bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
 
