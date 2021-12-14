@@ -23,7 +23,7 @@ public class OrderEventsController {
     }
 
     @PostMapping
-    public ResponseEntity<OrderEvent> postLibraryEvent(@RequestBody @Valid OrderEvent orderEvent)
+    public ResponseEntity<OrderEvent> postOrderEvent(@RequestBody @Valid OrderEvent orderEvent)
             throws JsonProcessingException {
 
         log.info("invoke kafka producer");
@@ -34,7 +34,7 @@ public class OrderEventsController {
     }
 
     @PutMapping
-    public ResponseEntity<?> putLibraryEvent(@RequestBody @Valid OrderEvent orderEvent)
+    public ResponseEntity<?> putOrderEvent(@RequestBody @Valid OrderEvent orderEvent)
             throws JsonProcessingException {
 
         if (orderEvent.getOrderEventId() == null) {
@@ -43,7 +43,6 @@ public class OrderEventsController {
 
         orderEvent.setOrderEventType(OrderEventType.UPDATE);
         // if you want to send a message to same partition, make sure you pass the same key
-        // Message send successfully for the key : 123 and the value is {"libraryEventId":123,"libraryEventType":"UPDATE","book":{"bookId":456,"bookName":"Kafka Using Spring Boot","bookAuthor":"Taro"}}, partition is 1
         orderEventProducer.sendOrderEvent(orderEvent);
         return ResponseEntity.status(HttpStatus.OK).body(orderEvent);
     }

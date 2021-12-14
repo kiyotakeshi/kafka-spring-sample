@@ -9,9 +9,9 @@ spring:
         - localhost:9094
       key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      group-id: order-notification-events-group
+      group-id: order-rdb-events-group
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/kafka-spring-sample?createDatabaseIfNotExist=true
     username: root
     password: 1qazxsw2
@@ -19,7 +19,14 @@ spring:
     show-sql: true
     properties:
       hibernate:
+        # 予約語である order を使えるようにする
+        # globally_quoted_identifiers: true
         dialect: org.hibernate.dialect.MySQL8Dialect
+        # storage_engine: InnoDB
         format_sql: true
     hibernate:
       ddl-auto: update
+# パラメータの値をログに表示 ex.) binding parameter [1] as [INTEGER] - [1]
+# logging.level.org.hibernate.type: trace にして出力されるログからパッケージを特定
+# 2021-11-21 00:55:11.604 TRACE 11400 --- [ main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder: trace
