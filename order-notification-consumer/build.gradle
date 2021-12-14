@@ -27,6 +27,8 @@ dependencies {
 	testImplementation 'org.springframework.kafka:spring-kafka-test'
 }
 
+ext['log4j2.version'] = '2.16.0'
+
 test {
 	useJUnitPlatform()
 }
